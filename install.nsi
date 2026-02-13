@@ -27,28 +27,25 @@
 ; Writes to Program Files and HKLM, so require elevation explicitly.
 RequestExecutionLevel admin
 
-; MUI 1.67 compatible ------
-!include "MUI.nsh"
+; MUI 2.x compatible ------
+!include "MUI2.nsh"
 
 ; MUI Settings
 !define MUI_ABORTWARNING
 !define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\modern-install.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 
-; Welcome page
+; Installer pages (MUI2)
 !insertmacro MUI_PAGE_WELCOME
-; License page
 !define MUI_LICENSEPAGE_CHECKBOX
 !insertmacro MUI_PAGE_LICENSE "LICENSE"
-; Directory page
 !insertmacro MUI_PAGE_DIRECTORY
-; Instfiles page
 !insertmacro MUI_PAGE_INSTFILES
-; Finish page
 !define MUI_FINISHPAGE_RUN "$INSTDIR\Galaxy Buds Client.exe"
 !insertmacro MUI_PAGE_FINISH
 
 ; Uninstaller pages
+!insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
 ; Language files
@@ -130,11 +127,6 @@ SectionEnd
 Function un.onUninstSuccess
   HideWindow
   MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) has been successfully uninstalled."
-FunctionEnd
-
-Function un.onInit
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "Do you want to uninstall $(^Name) and all its components?" IDYES +2
-  Abort
 FunctionEnd
 
 Section Uninstall
