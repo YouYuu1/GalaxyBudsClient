@@ -154,7 +154,7 @@ jobs:
     - name: Rename (arm64)
       run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_arm64.pkg
 
-    - uses: AButler/upload-release-assets@v3.0
+    - uses: AButler/upload-release-assets@v3.0.1
       with:
         files: '*.pkg'
         repo-token: ${{ secrets.GH_TOKEN }}

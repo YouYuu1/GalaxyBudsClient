@@ -191,7 +191,7 @@ jobs:
         ren GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_64bit_Setup.exe
         ren GalaxyBudsClient.exe GalaxyBudsClient_Windows_64bit_Portable.exe
 
-    - uses: AButler/upload-release-assets@v3.0
+    - uses: AButler/upload-release-assets@v3.0.1
       with:
         files: '*.exe'
         repo-token: ${{ secrets.GH_TOKEN }}

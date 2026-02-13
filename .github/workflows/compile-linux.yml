@@ -147,7 +147,7 @@ jobs:
     - name: Rename (arm64)
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_arm64_Portable.bin
 
-    - uses: AButler/upload-release-assets@v3.0
+    - uses: AButler/upload-release-assets@v3.0.1
       with:
         files: '*.bin'
         repo-token: ${{ secrets.GH_TOKEN }}
